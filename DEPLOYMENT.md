@@ -5,12 +5,16 @@ This walks through deploying with **Render** (backend) + **Vercel**
 size. Railway/Netlify/Heroku work almost identically if your team prefers
 those instead.
 
+**Who does what:** Lincoln owns Part 1 (backend/Render). Vivian owns Part 2
+(frontend/Vercel). Part 3 (locking down CORS) needs both of you — do it
+together once Parts 1 and 2 are both live.
+
 **Before you start:** push this whole project to your team's shared GitHub
 repo. Both Render and Vercel deploy by connecting to GitHub.
 
 ---
 
-## Part 1: Deploy the backend (Render)
+## Part 1: Deploy the backend (Render) — Lincoln
 
 1. Go to [render.com](https://render.com) → sign up/log in → **New +** → **Web Service**
 2. Connect your GitHub repo
@@ -44,7 +48,7 @@ repo. Both Render and Vercel deploy by connecting to GitHub.
 
 ---
 
-## Part 2: Deploy the frontend (Vercel)
+## Part 2: Deploy the frontend (Vercel) — Vivian
 
 1. Go to [vercel.com](https://vercel.com) → sign up/log in → **Add New** → **Project**
 2. Import the same GitHub repo
@@ -62,7 +66,7 @@ repo. Both Render and Vercel deploy by connecting to GitHub.
 
 ---
 
-## Part 3: Lock down CORS (important — don't skip)
+## Part 3: Lock down CORS (important — don't skip) — both Lincoln & Vivian
 
 Go back to Render → your web service → **Environment** → set:
 
