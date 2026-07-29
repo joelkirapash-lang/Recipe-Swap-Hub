@@ -22,8 +22,8 @@ export default function Home() {
           <p className="hero-eyebrow">A community cookbook</p>
           <h1>Cook from what you have. Share what you make.</h1>
           <p className="lead">
-            Post your own recipes, save the ones worth repeating, and find out what you can
-            cook tonight from what's already in your kitchen.
+            Share recipes. Save favorites. Cook tonight using what’s in your
+            kitchen
           </p>
           <div className="hero-actions">
             <Link to="/recipes" className="btn btn-primary">
