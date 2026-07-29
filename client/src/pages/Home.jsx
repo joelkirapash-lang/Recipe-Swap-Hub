@@ -22,7 +22,7 @@ export default function Home() {
           <p className="hero-eyebrow">A community cookbook</p>
           <h2>
             Turn what you have into tonight’s dinner, and share the recipes
-            worth repea
+            worth repeating
           </h2>
           <p className="lead">
             Share recipes. Save favorites. Cook tonight using what’s in your
