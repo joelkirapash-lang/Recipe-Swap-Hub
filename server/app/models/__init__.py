@@ -3,6 +3,9 @@ from app.extensions import db
 
 
 class User(db.Model):
+    """A registered user. Authors many recipes, writes many reviews, and
+    can favorite many recipes (via the Favorite join table)."""
+
     __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -28,6 +31,9 @@ class User(db.Model):
 
 
 class Recipe(db.Model):
+    """A recipe posted by a user. Holds a many-to-many link to Ingredient
+    (via RecipeIngredient) and a one-to-many link to Review."""
+
     __tablename__ = "recipes"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -66,6 +72,9 @@ class Recipe(db.Model):
 
 
 class Ingredient(db.Model):
+    """A reusable ingredient shared across recipes. Matched by name
+    (case-insensitive) so we don't create duplicate rows like 'Egg'/'egg'."""
+
     __tablename__ = "ingredients"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -101,6 +110,9 @@ class RecipeIngredient(db.Model):
 
 
 class Review(db.Model):
+    """A review left by a user on a recipe. Also carries our two unique
+    features: made_it (the "Made It" tag) and swap_note (Community Swaps)."""
+
     __tablename__ = "reviews"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -129,7 +141,7 @@ class Review(db.Model):
 
 
 class Favorite(db.Model):
-    """Join table implementing the User <-> Recipe many-to-many
+    """A user's saved recipe. Join table implementing the User <-> Recipe many-to-many
     relationship (a user's saved recipes)."""
 
     __tablename__ = "favorites"

@@ -1,3 +1,4 @@
+import re
 from flask import Blueprint, request, jsonify, current_app
 from itsdangerous import URLSafeTimedSerializer, BadSignature, SignatureExpired
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
@@ -24,6 +25,9 @@ def register():
 
     if not name or not email or not password:
         return jsonify({"error": "name, email and password are all required"}), 400
+
+    if not re.match(r"^[^@\s]+@[^@\s]+\.[^@\s]+$", email):
+        return jsonify({"error": "please enter a valid email address"}), 400
 
     if len(password) < 8:
         return jsonify({"error": "password must be at least 8 characters"}), 400
