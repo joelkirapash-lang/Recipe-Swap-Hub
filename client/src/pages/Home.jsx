@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../api/client";
 import RecipeCard from "../components/RecipeCard";
+
 export default function Home() {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,40 +14,35 @@ export default function Home() {
       .catch(() => setRecipes([]))
       .finally(() => setLoading(false));
   }, []);
+
   return (
     <div className="app-shell-content">
       <section className="hero">
         <div className="container">
-          <p className="hero-eyebrow">Your community kitchen hub</p>
-          <h2>
-            Cook with what’s on hand, save your go-to meals, and share what you
-            make.
-          </h2>
+          <p className="hero-eyebrow">Community Cookbook</p>
+          <h2>Cook what you have. Share what you make.</h2>
           <p className="lead">
-            Turn pantry staples into tonight’s dinner and organize your favorite
-            dishes all in one place.
+            Find recipes, save favorites, and cook with your pantry.
           </p>
           <div className="hero-actions">
             <Link to="/recipes" className="btn btn-primary">
-              Explore Recipes
+              Explore
             </Link>
             <Link to="/register" className="btn btn-secondary">
-              Join the Community
+              Join Now
             </Link>
           </div>
         </div>
       </section>
 
       <div className="container page">
-        <h2>Freshly Shared</h2>
-        {loading && <p>Gathering recipes...</p>}
+        <h2>Latest Recipes</h2>
+        {loading && <p>Loading...</p>}
         {!loading && recipes.length === 0 && (
           <div className="empty-state">
-            <p>
-              No recipes added yet — kick off the collection by sharing yours!
-            </p>
+            <p>No recipes yet. Share the first one!</p>
             <Link to="/recipes/new" className="btn btn-primary">
-              Share a Recipe
+              Add Recipe
             </Link>
           </div>
         )}
