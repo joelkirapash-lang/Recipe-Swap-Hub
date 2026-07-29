@@ -20,7 +20,10 @@ export default function Home() {
       <section className="hero">
         <div className="container">
           <p className="hero-eyebrow">A community cookbook</p>
-          <h1>Cook from what you have. Share what you make.</h1>
+          <h2>
+            Turn what you have into tonight’s dinner, and share the recipes
+            worth repea
+          </h2>
           <p className="lead">
             Share recipes. Save favorites. Cook tonight using what’s in your
             kitchen
