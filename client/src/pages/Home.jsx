@@ -19,31 +19,30 @@ export default function Home() {
     <div className="app-shell-content">
       <section className="hero">
         <div className="container">
-          <p className="hero-eyebrow">A community cookbook</p>
-          <h1>Cook from what you have. Share what you make.</h1>
+          <p className="hero-eyebrow">Community Cookbook</p>
+          <h2>Cook what you have. Share what you make.</h2>
           <p className="lead">
-            Post your own recipes, save the ones worth repeating, and find out what you can
-            cook tonight from what's already in your kitchen.
+            Find recipes, save favorites, and cook with your pantry.
           </p>
           <div className="hero-actions">
             <Link to="/recipes" className="btn btn-primary">
-              Browse Recipes
+              Explore
             </Link>
             <Link to="/register" className="btn btn-secondary">
-              Join Recipe Swap Hub
+              Join Now
             </Link>
           </div>
         </div>
       </section>
 
       <div className="container page">
-        <h2>Recently added</h2>
-        {loading && <p>Loading recipes...</p>}
+        <h2>Latest Recipes</h2>
+        {loading && <p>Loading...</p>}
         {!loading && recipes.length === 0 && (
           <div className="empty-state">
-            <p>No recipes yet — be the first to post one.</p>
+            <p>No recipes yet. Share the first one!</p>
             <Link to="/recipes/new" className="btn btn-primary">
-              Post a Recipe
+              Add Recipe
             </Link>
           </div>
         )}
