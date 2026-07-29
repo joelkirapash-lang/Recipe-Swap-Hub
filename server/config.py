@@ -21,5 +21,7 @@ class Config:
     JWT_SECRET_KEY = os.environ.get("JWT_SECRET_KEY", "dev-jwt-secret-change-me")
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=24)
 
-    # Password reset tokens expire after 30 minutes
+    # 30 minutes balances security (a short-lived token limits damage if
+    # the reset link leaks) against usability (enough time to check email
+    # and click it). Increase this if users report links expiring too fast.
     RESET_TOKEN_MAX_AGE_SECONDS = 1800
