@@ -33,7 +33,6 @@ export default function ForgotPassword() {
         {/* CHANGED: Simplified heading */}
         <h1 style={{ textAlign: "center" }}>Reset Password</h1>
 
-        {/* CHANGED: Shortened instructions */}
         <p style={{ textAlign: "center", color: "var(--color-text-muted)" }}>
           Enter your email to receive a reset link.
         </p>
