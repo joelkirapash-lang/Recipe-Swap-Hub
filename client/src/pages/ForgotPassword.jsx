@@ -30,7 +30,6 @@ export default function ForgotPassword() {
   return (
     <div className="container page">
       <div className="form-card">
-        {/* CHANGED: Simplified heading */}
         <h1 style={{ textAlign: "center" }}>Reset Password</h1>
 
         <p style={{ textAlign: "center", color: "var(--color-text-muted)" }}>
