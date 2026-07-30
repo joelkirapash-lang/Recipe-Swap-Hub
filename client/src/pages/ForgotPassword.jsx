@@ -17,7 +17,7 @@ export default function ForgotPassword() {
     try {
       const data = await api.forgotPassword(email);
       setMessage(data.message);
-      // dev_reset_link only exists until a real email service is wired up —
+
       // see the backend README before deploying.
       if (data.dev_reset_link) setDevLink(data.dev_reset_link);
     } catch (err) {
