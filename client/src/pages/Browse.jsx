@@ -23,7 +23,7 @@ export default function Browse() {
   }, []);
 
   const filtered = recipes.filter((r) =>
-    r.title.toLowerCase().includes(search.toLowerCase())
+    r.title.toLowerCase().includes(search.toLowerCase()),
   );
 
   function addPantryItem(e) {
@@ -56,18 +56,21 @@ export default function Browse() {
     <div className="container page">
       <div className="recipe-detail-header">
         <div>
-          <h1>Browse Recipes</h1>
+          <h1>Recipes</h1>
           <p style={{ color: "var(--color-text-muted)" }}>
-            {recipes.length} recipe{recipes.length !== 1 ? "s" : ""} shared so far
+            {recipes.length} recipe{recipes.length !== 1 ? "s" : ""} total
           </p>
         </div>
-        <button className="btn btn-secondary" onClick={() => setPantryOpen(!pantryOpen)}>
-          {pantryOpen ? "Hide" : "What Can I Cook?"}
+        <button
+          className="btn btn-secondary"
+          onClick={() => setPantryOpen(!pantryOpen)}
+        >
+          {pantryOpen ? "Close Pantry" : "Pantry Finder"}
         </button>
       </div>
 
       <input
-        placeholder="Search recipes by title..."
+        placeholder="Search recipes..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         style={{ marginBottom: 8 }}
@@ -75,14 +78,13 @@ export default function Browse() {
 
       {pantryOpen && (
         <div className="pantry-panel">
-          <h3 style={{ marginTop: 0 }}>What Can I Cook?</h3>
+          <h3 style={{ marginTop: 0 }}>Pantry Finder</h3>
           <p style={{ color: "var(--color-text-muted)", marginBottom: 12 }}>
-            Add the ingredients you already have. We'll show recipes you can make fully,
-            or that are only missing a couple of things.
+            Add ingredients you have to find matching recipes.
           </p>
           <form onSubmit={addPantryItem} style={{ display: "flex", gap: 8 }}>
             <input
-              placeholder="e.g. eggs"
+              placeholder="e.g. eggs, rice"
               value={ingredientInput}
               onChange={(e) => setIngredientInput(e.target.value)}
             />
@@ -96,7 +98,10 @@ export default function Browse() {
               {pantryItems.map((item) => (
                 <span className="pantry-tag" key={item}>
                   {item}
-                  <button onClick={() => removePantryItem(item)} aria-label={`Remove ${item}`}>
+                  <button
+                    onClick={() => removePantryItem(item)}
+                    aria-label={`Remove ${item}`}
+                  >
                     ×
                   </button>
                 </span>
@@ -109,13 +114,13 @@ export default function Browse() {
             onClick={runPantryMatch}
             disabled={pantryItems.length === 0 || matching}
           >
-            {matching ? "Matching..." : "Find recipes"}
+            {matching ? "Matching..." : "Find Matches"}
           </button>
 
           {matches !== null && (
             <div style={{ marginTop: 20 }}>
               {matches.length === 0 ? (
-                <p>No close matches yet — try adding a few more ingredients.</p>
+                <p>No matches found. Try adding more ingredients.</p>
               ) : (
                 <div className="recipe-grid">
                   {matches.map((m) => (
@@ -124,8 +129,8 @@ export default function Browse() {
                       recipe={m.recipe}
                       badge={
                         m.missing_count === 0
-                          ? "You have everything!"
-                          : `Missing ${m.missing_count}: ${m.missing_ingredients.join(", ")}`
+                          ? "Ready to cook!"
+                          : `Missing (${m.missing_count}): ${m.missing_ingredients.join(", ")}`
                       }
                     />
                   ))}
@@ -136,11 +141,11 @@ export default function Browse() {
         </div>
       )}
 
-      {loading && <p>Loading recipes...</p>}
+      {loading && <p>Loading...</p>}
 
       {!loading && filtered.length === 0 && (
         <div className="empty-state">
-          <p>No recipes match your search.</p>
+          <p>No recipes found.</p>
         </div>
       )}
 
