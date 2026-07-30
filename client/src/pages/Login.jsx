@@ -30,7 +30,7 @@ export default function Login() {
   return (
     <div className="container page">
       <div className="form-card">
-        <h1 style={{ textAlign: "center" }}>Log in</h1>
+        <h2 style={{ textAlign: "center" }}>Log in</h2>
         {error && <div className="alert alert-error">{error}</div>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
