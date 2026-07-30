@@ -43,7 +43,6 @@ export default function ForgotPassword() {
 
         {devLink && (
           <div className="alert alert-success">
-            {/* CHANGED: Shortened dev notice copy */}
             Dev mode: <Link to={devLink}>Reset password link</Link>
           </div>
         )}
