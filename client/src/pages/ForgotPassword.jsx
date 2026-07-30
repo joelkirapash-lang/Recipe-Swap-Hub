@@ -18,7 +18,6 @@ export default function ForgotPassword() {
       const data = await api.forgotPassword(email);
       setMessage(data.message);
 
-      // see the backend README before deploying.
       if (data.dev_reset_link) setDevLink(data.dev_reset_link);
     } catch (err) {
       setError(err.message);
