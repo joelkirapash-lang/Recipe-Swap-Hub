@@ -41,6 +41,7 @@ def remove_favorite(recipe_id):
     if not favorite:
         return jsonify({"error": "not in favorites"}), 404
 
+
     db.session.delete(favorite)
     db.session.commit()
     return jsonify({"message": "removed from favorites"}), 200
