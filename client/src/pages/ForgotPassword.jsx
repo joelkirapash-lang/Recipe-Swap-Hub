@@ -30,17 +30,21 @@ export default function ForgotPassword() {
   return (
     <div className="container page">
       <div className="form-card">
-        <h1 style={{ textAlign: "center" }}>Forgot password</h1>
+        {/* CHANGED: Simplified heading */}
+        <h1 style={{ textAlign: "center" }}>Reset Password</h1>
+
+        {/* CHANGED: Shortened instructions */}
         <p style={{ textAlign: "center", color: "var(--color-text-muted)" }}>
-          Enter your email and we'll send you a link to reset your password.
+          Enter your email to receive a reset link.
         </p>
+
         {error && <div className="alert alert-error">{error}</div>}
         {message && <div className="alert alert-success">{message}</div>}
 
         {devLink && (
           <div className="alert alert-success">
-            Dev mode (no email service yet):{" "}
-            <Link to={devLink}>Click here to reset your password</Link>
+            {/* CHANGED: Shortened dev notice copy */}
+            Dev mode: <Link to={devLink}>Reset password link</Link>
           </div>
         )}
 
@@ -56,11 +60,13 @@ export default function ForgotPassword() {
             />
           </div>
           <button className="btn btn-primary btn-block" disabled={submitting}>
-            {submitting ? "Sending..." : "Send reset link"}
+            {/* CHANGED: Standardized capitalization */}
+            {submitting ? "Sending..." : "Send Reset Link"}
           </button>
         </form>
         <p className="form-footer-link">
-          <Link to="/login">Back to login</Link>
+          {/* CHANGED: Standardized link text */}
+          <Link to="/login">Back to Login</Link>
         </p>
       </div>
     </div>
