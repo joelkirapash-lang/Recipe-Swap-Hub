@@ -60,7 +60,6 @@ export default function ForgotPassword() {
             />
           </div>
           <button className="btn btn-primary btn-block" disabled={submitting}>
-            {/* CHANGED: Standardized capitalization */}
             {submitting ? "Sending..." : "Send Reset Link"}
           </button>
         </form>
