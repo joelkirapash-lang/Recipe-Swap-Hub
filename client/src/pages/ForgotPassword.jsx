@@ -17,8 +17,7 @@ export default function ForgotPassword() {
     try {
       const data = await api.forgotPassword(email);
       setMessage(data.message);
-      // dev_reset_link only exists until a real email service is wired up —
-      // see the backend README before deploying.
+
       if (data.dev_reset_link) setDevLink(data.dev_reset_link);
     } catch (err) {
       setError(err.message);
@@ -30,17 +29,18 @@ export default function ForgotPassword() {
   return (
     <div className="container page">
       <div className="form-card">
-        <h1 style={{ textAlign: "center" }}>Forgot password</h1>
+        <h1 style={{ textAlign: "center" }}>Reset Password</h1>
+
         <p style={{ textAlign: "center", color: "var(--color-text-muted)" }}>
-          Enter your email and we'll send you a link to reset your password.
+          Enter your email to receive a reset link.
         </p>
+
         {error && <div className="alert alert-error">{error}</div>}
         {message && <div className="alert alert-success">{message}</div>}
 
         {devLink && (
           <div className="alert alert-success">
-            Dev mode (no email service yet):{" "}
-            <Link to={devLink}>Click here to reset your password</Link>
+            Dev mode: <Link to={devLink}>Reset password link</Link>
           </div>
         )}
 
@@ -56,11 +56,11 @@ export default function ForgotPassword() {
             />
           </div>
           <button className="btn btn-primary btn-block" disabled={submitting}>
-            {submitting ? "Sending..." : "Send reset link"}
+            {submitting ? "Sending..." : "Send Reset Link"}
           </button>
         </form>
         <p className="form-footer-link">
-          <Link to="/login">Back to login</Link>
+          <Link to="/login">Back to Login</Link>
         </p>
       </div>
     </div>
