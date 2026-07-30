@@ -77,6 +77,7 @@ def update_review(review_id):
     return jsonify({"review": review.to_dict()}), 200
 
 
+
 @reviews_bp.delete("/reviews/<int:review_id>")
 @jwt_required()
 def delete_review(review_id):

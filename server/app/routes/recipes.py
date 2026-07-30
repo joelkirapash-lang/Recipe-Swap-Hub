@@ -139,5 +139,6 @@ def pantry_match():
                 "missing_count": len(missing),
             })
 
+
     results.sort(key=lambda r: r["missing_count"])
     return jsonify({"matches": results}), 200
