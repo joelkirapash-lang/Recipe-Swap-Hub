@@ -4,6 +4,9 @@ export default function RecipeCard({ recipe, badge }) {
   return (
     <Link to={`/recipes/${recipe.id}`} className="recipe-card">
       <div className="recipe-card-fold" aria-hidden="true" />
+      {recipe.image_url && (
+        <img src={recipe.image_url} alt={recipe.title} className="recipe-card-image" />
+      )}
       {badge && <span className="recipe-card-badge">{badge}</span>}
       <h3 className="recipe-card-title">{recipe.title}</h3>
       {recipe.description && <p className="recipe-card-desc">{recipe.description}</p>}

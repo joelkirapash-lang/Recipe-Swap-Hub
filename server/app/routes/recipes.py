@@ -65,6 +65,7 @@ def create_recipe():
     recipe = Recipe(
         title=title,
         description=data.get("description"),
+        image_url=data.get("image_url"),
         steps=steps,
         author_id=user_id,
         forked_from_id=data.get("forked_from_id"),
@@ -93,6 +94,8 @@ def update_recipe(recipe_id):
         recipe.title = data["title"].strip()
     if "description" in data:
         recipe.description = data["description"]
+    if "image_url" in data:
+        recipe.image_url = data["image_url"]
     if "steps" in data:
         recipe.steps = data["steps"].strip()
     if "ingredients" in data:

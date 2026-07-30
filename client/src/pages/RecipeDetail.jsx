@@ -113,6 +113,10 @@ export default function RecipeDetail() {
     <div className="container page">
       {error && <div className="alert alert-error">{error}</div>}
 
+      {recipe.image_url && (
+        <img src={recipe.image_url} alt={recipe.title} className="recipe-detail-image" />
+      )}
+
       <div className="recipe-detail-header">
         <div>
           <h1>{recipe.title}</h1>

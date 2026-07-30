@@ -39,6 +39,7 @@ class Recipe(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
     description = db.Column(db.String(500))
+    image_url = db.Column(db.String(500), nullable=True)
     steps = db.Column(db.Text, nullable=False)
     author_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
@@ -60,6 +61,7 @@ class Recipe(db.Model):
             "id": self.id,
             "title": self.title,
             "description": self.description,
+            "image_url": self.image_url,
             "steps": self.steps,
             "author_id": self.author_id,
             "author_name": self.author.name if self.author else None,

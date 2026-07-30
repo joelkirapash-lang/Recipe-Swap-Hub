@@ -16,6 +16,7 @@ export default function RecipeForm() {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [steps, setSteps] = useState("");
   const [rows, setRows] = useState([emptyRow()]);
   const [forkedFromId, setForkedFromId] = useState(null);
@@ -32,6 +33,7 @@ export default function RecipeForm() {
           const r = data.recipe;
           setTitle(r.title);
           setDescription(r.description || "");
+          setImageUrl(r.image_url || "");
           setSteps(r.steps);
           setRows(
             r.ingredients.length
@@ -49,6 +51,7 @@ export default function RecipeForm() {
     } else if (remixFrom) {
       setTitle(`${remixFrom.title} (Remix)`);
       setDescription(remixFrom.description || "");
+      setImageUrl(remixFrom.image_url || "");
       setSteps(remixFrom.steps);
       setRows(
         (remixFrom.ingredients || []).map((ing) => ({
@@ -92,7 +95,7 @@ export default function RecipeForm() {
       return;
     }
 
-    const payload = { title: title.trim(), description: description.trim(), steps: steps.trim(), ingredients };
+    const payload = { title: title.trim(), description: description.trim(), image_url: imageUrl.trim(), steps: steps.trim(), ingredients };
     if (forkedFromId) payload.forked_from_id = forkedFromId;
 
     setSubmitting(true);
@@ -132,6 +135,28 @@ export default function RecipeForm() {
             onChange={(e) => setDescription(e.target.value)}
             placeholder="One line about this recipe"
           />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="imageUrl">Photo (paste a link to an image)</label>
+          <input
+            id="imageUrl"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+            placeholder="https://example.com/your-photo.jpg"
+          />
+          <p className="form-hint">Upload your photo to Google Photos, Imgur, or any image host, then paste the link here.</p>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="imageUrl">Photo (paste a link to an image)</label>
+          <input
+            id="imageUrl"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+            placeholder="https://example.com/your-photo.jpg"
+          />
+          <p className="form-hint">Upload your photo to Google Photos, Imgur, or any image host, then paste the link here.</p>
         </div>
 
         <div className="form-group">
