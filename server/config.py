@@ -25,3 +25,9 @@ class Config:
     # the reset link leaks) against usability (enough time to check email
     # and click it). Increase this if users report links expiring too fast.
     RESET_TOKEN_MAX_AGE_SECONDS = 1800
+
+    # Which frontend origin(s) are allowed to call this API. "*" (default)
+    # works everywhere but is loose - once you have a deployed frontend URL,
+    # set FRONTEND_URL in your host's env vars to lock it down, e.g.
+    # FRONTEND_URL=https://recipe-swap-hub-2026.netlify.app
+    FRONTEND_URL = os.environ.get("FRONTEND_URL", "*")
