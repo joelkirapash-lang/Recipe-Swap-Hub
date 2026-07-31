@@ -13,25 +13,25 @@ def create_app(config_class=Config):
     jwt.init_app(app)
     bcrypt.init_app(app)
     # allow the React dev server (usually localhost:5173 or :3000) to call this API
-    cors.init_app(app, resources={r"/*": {"origins": "*"}})
+    cors.init_app(app, resources={r"/api/*": {"origins": app.config["FRONTEND_URL"]}})
 
     # Import models so Flask-Migrate can detect them for migrations
     from app import models  # noqa: F401
 
     # Register route blueprints
     from app.routes.auth import auth_bp
-    app.register_blueprint(auth_bp, url_prefix="/auth")
+    app.register_blueprint(auth_bp, url_prefix="/api/auth")
 
     from app.routes.recipes import recipes_bp
-    app.register_blueprint(recipes_bp, url_prefix="/recipes")
+    app.register_blueprint(recipes_bp, url_prefix="/api/recipes")
 
     from app.routes.reviews import reviews_bp
-    app.register_blueprint(reviews_bp, url_prefix="/reviews")
+    app.register_blueprint(reviews_bp, url_prefix="/api")
 
     from app.routes.favorites import favorites_bp
-    app.register_blueprint(favorites_bp, url_prefix="/favorites")
+    app.register_blueprint(favorites_bp, url_prefix="/api/favorites")
 
-    @app.get("/health")
+    @app.get("/api/health")
     def health():
         return {"status": "ok"}
 
